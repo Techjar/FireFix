@@ -13,18 +13,18 @@
 package com.techjar.bukkit.FireFix;
 
 import org.bukkit.event.player.PlayerListener;
-import org.bukkit.event.player.PlayerAnimationEvent;
-import org.bukkit.event.player.PlayerAnimationType;
+//import org.bukkit.event.player.PlayerAnimationEvent;
+//import org.bukkit.event.player.PlayerAnimationType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.entity.Player;
-import org.bukkit.World;
+//import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.Material;
 import java.util.HashSet;
 
 public class LPlayer extends PlayerListener {
-    private boolean litBlock = false;
+    //private boolean litBlock = false;
     private HashSet<Byte> transparent = new HashSet<Byte>();
 
     public LPlayer(FireFix plugin) {
@@ -36,19 +36,14 @@ public class LPlayer extends PlayerListener {
         //Player player = event.getPlayer();
         /* if(event.hasItem() || event.hasBlock() || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if(canLightBlock(event.getClickedBlock().getTypeId()) && (event.getItem().getType() == Material.FLINT_AND_STEEL || event.getItem().getType() == Material.FIRE)) {
-                System.out.println("Woo!");
+                System.out.println("It happened!");
             }
         } */
-        //System.out.println("Woo!");
         if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-            //System.out.println("Woo!");
-            //System.out.println(transparent.toString());
             Player player = event.getPlayer();
             //World world = player.getWorld();
             Block block = player.getTargetBlock(transparent, 4);
-            //System.out.println(block.getTypeId());
             if(block.getType() == Material.FIRE) {
-                //System.out.println("Woo!");
                 block.setTypeId(0);
             }
         }
@@ -57,7 +52,6 @@ public class LPlayer extends PlayerListener {
     /* @Override
     public void onPlayerAnimation(PlayerAnimationEvent event) {
         if(event.getAnimationType() == PlayerAnimationType.ARM_SWING) {
-            //System.out.println("Woo!");
             if(litBlock) {
                 litBlock = false;
                 return;
@@ -71,7 +65,7 @@ public class LPlayer extends PlayerListener {
         }
     } */
 
-    private boolean canLightBlock(int id) {
+    /* private boolean canLightBlock(int id) {
         switch(id) {
             case 1:
             case 2:
@@ -114,7 +108,7 @@ public class LPlayer extends PlayerListener {
             default:
                 return false;
         }
-    }
+    } */
 
     private void setupTransparent() {
         transparent.add(new Integer(0).byteValue());

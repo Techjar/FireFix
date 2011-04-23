@@ -17,7 +17,6 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Biome;
 import org.bukkit.Material;
-//import org.bukkit.event.block.BlockBurnEvent;
 //import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockListener;
@@ -39,8 +38,6 @@ public class LBlock extends BlockListener {
                 event.setCancelled(true);
                 return;
             } */
-            //System.out.println(loc.getBlockY());
-            //System.out.println(block.getTypeId());
             if(world.getBlockAt(loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ()).getType() == Material.NETHERRACK) {
                 return;
             }
@@ -49,7 +46,6 @@ public class LBlock extends BlockListener {
             }
             for(int i = loc.getBlockY(); i < 128; i++) {
                 Block block2 = world.getBlockAt(loc.getBlockX(), i, loc.getBlockZ());
-                //System.out.println(block2.getTypeId());
                 if(isBlockSolid(block2.getTypeId())) {
                     center = true;
                 }
@@ -78,11 +74,6 @@ public class LBlock extends BlockListener {
                     right = true;
                 }
             }
-            /* System.out.println(center);
-            System.out.println(top);
-            System.out.println(bottom);
-            System.out.println(left);
-            System.out.println(right); */
             if(!center || !top || !bottom || !left || !right) {
                 event.setCancelled(true);
             }
