@@ -1,0 +1,6 @@
+name: FireFix
+main: com.techjar.bukkit.FireFix.FireFix
+version: 1.0
+author: Techjar
+description: >
+             Fixes fire extenguishing in SMP.
