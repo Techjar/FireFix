@@ -13,18 +13,14 @@
 package com.techjar.bukkit.FireFix;
 
 import org.bukkit.event.player.PlayerListener;
-//import org.bukkit.event.player.PlayerAnimationEvent;
-//import org.bukkit.event.player.PlayerAnimationType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.entity.Player;
-//import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.Material;
 import java.util.HashSet;
 
 public class LPlayer extends PlayerListener {
-    //private boolean litBlock = false;
     private HashSet<Byte> transparent = new HashSet<Byte>();
 
     public LPlayer(FireFix plugin) {
@@ -33,82 +29,14 @@ public class LPlayer extends PlayerListener {
 
     @Override
     public void onPlayerInteract(PlayerInteractEvent event) {
-        //Player player = event.getPlayer();
-        /* if(event.hasItem() || event.hasBlock() || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if(canLightBlock(event.getClickedBlock().getTypeId()) && (event.getItem().getType() == Material.FLINT_AND_STEEL || event.getItem().getType() == Material.FIRE)) {
-                System.out.println("It happened!");
-            }
-        } */
         if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
             Player player = event.getPlayer();
-            //World world = player.getWorld();
             Block block = player.getTargetBlock(transparent, 4);
             if(block.getType() == Material.FIRE) {
                 block.setTypeId(0);
             }
         }
     }
-
-    /* @Override
-    public void onPlayerAnimation(PlayerAnimationEvent event) {
-        if(event.getAnimationType() == PlayerAnimationType.ARM_SWING) {
-            if(litBlock) {
-                litBlock = false;
-                return;
-            }
-            Player player = event.getPlayer();
-            //World world = player.getWorld();
-            Block block = player.getTargetBlock(null, 4);
-            if(block.getType() == Material.FIRE) {
-                block.setTypeId(0);
-            }
-        }
-    } */
-
-    /* private boolean canLightBlock(int id) {
-        switch(id) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 7:
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 17:
-            case 18:
-            case 19:
-            case 21:
-            case 22:
-            case 24:
-            case 35:
-            case 41:
-            case 42:
-            case 43:
-            case 45:
-            case 46:
-            case 47:
-            case 48:
-            case 49:
-            case 56:
-            case 57:
-            case 73:
-            case 74:
-            case 80:
-            case 82:
-            case 86:
-            case 87:
-            case 88:
-            case 89:
-            case 91:
-                return true;
-            default:
-                return false;
-        }
-    } */
 
     private void setupTransparent() {
         transparent.add(new Integer(0).byteValue());
