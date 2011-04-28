@@ -1,6 +1,6 @@
 name: FireFix
 main: com.techjar.bukkit.FireFix.FireFix
-version: 1.3
+version: 1.3.1
 author: Techjar
 description: >
              Fixes fire extinguishing in SMP.

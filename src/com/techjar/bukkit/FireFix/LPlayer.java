@@ -24,11 +24,10 @@ public class LPlayer extends PlayerListener {
 
     @Override
     public void onPlayerInteract(PlayerInteractEvent event) {
+        if(event.isCancelled()) return;
         if(event.getAction() == Action.LEFT_CLICK_BLOCK) {
             Block block = event.getClickedBlock().getFace(event.getBlockFace());
-            if(block.getType() == Material.FIRE) {
-                block.setTypeId(0);
-            }
+            if(block.getType() == Material.FIRE) block.setTypeId(0);
         }
     }
 }
